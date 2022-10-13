@@ -7,7 +7,7 @@ const { REST, Routes } = require('discord.js');
 if (fs.existsSync('./config.json')) {
     var { clientId, guildId, token } = require('./config.json')
 } else {
-    var { clientId, guildId, token } = process.env.NODE_CONFIG
+    var { clientId, guildId, token } = process.env
 }
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
