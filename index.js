@@ -36,6 +36,7 @@ for (const file of commandFiles) {
 	client.commands.set(command.data.name, command);
 }
 
+// What to do when command is called
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 
@@ -44,6 +45,7 @@ client.on('interactionCreate', async interaction => {
 	if (!command) return;
 
 	try {
+		console.log(`User ${interaction.user.tag} requested command: ${interaction.commandName}`);
 		await command.execute(interaction);
 	} catch (error) {
 		console.error(error);
