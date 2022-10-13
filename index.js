@@ -4,7 +4,11 @@ const _ = require('underscore')
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const { REST, Routes } = require('discord.js');
 
-const { clientId, guildId, token } = require('./config.json') || process.env.NODE_CONFIG
+if (fs.existsSync('./config.json')) {
+    var { clientId, guildId, token } = require('./config.json')
+} else {
+    var { clientId, guildId, token } = process.env.NODE_CONFIG
+}
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
