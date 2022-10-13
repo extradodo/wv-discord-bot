@@ -4,15 +4,7 @@ const _ = require('underscore')
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const { REST, Routes } = require('discord.js');
 
-const { clientId, guildId, token } = require('./config.json');
-
-if (!clientId) {
-	console.log('Production environments kicking in...')
-	const clientId = process.env.NODE_CONFIG.clientId 
-	const guildId = process.env.NODE_CONFIG.guildId
-	const token = process.env.NODE_CONFIG.token
-}
-
+const { clientId, guildId, token } = require('./config.json') || process.env.NODE_CONFIG
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
